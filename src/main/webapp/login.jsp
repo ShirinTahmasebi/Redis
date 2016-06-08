@@ -4,26 +4,21 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/login_style.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
         <script type="text/javascript" src="js/jquery-latest.min.js"></script>
-
         <%@ page 
             language="java"
             contentType="text/html; charset=UTF-8"
             pageEncoding="UTF-8"
             %>
-
     </head>
-
     <body>
         <%@ include file="menu.jsp" %> 
-
         <div id="form-main" dir = "rtl">
             <div id="form-div">
 
                 <form class="form" id="form1"  role="form" method="post" action="LoginController">
                     <p class="name" >
-                        <input name="userName" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="نام کاربری" id="name" />
+                        <input name="userName" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="نام کاربری" id="userName" />
                     </p>
 
                     <p class="password">

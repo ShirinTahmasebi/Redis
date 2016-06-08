@@ -8,4 +8,6 @@ public interface UserDao {
     public void insertUser(User user);
 
     public Map<String, String> getAllUsers();
+
+    public String getUser(User user);
 }

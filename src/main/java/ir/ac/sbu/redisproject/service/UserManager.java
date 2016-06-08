@@ -9,4 +9,6 @@ public interface UserManager {
 
     public Map<String, String> getAllUsers();
 
+    public String getUser(User user);
+
 }

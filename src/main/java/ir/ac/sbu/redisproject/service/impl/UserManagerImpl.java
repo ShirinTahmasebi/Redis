@@ -20,4 +20,10 @@ public class UserManagerImpl implements UserManager {
         return userDao.getAllUsers();
     }
 
+    @Override
+    public String getUser(User user) {
+        UserDao userDao = new UserDaoImpl();
+        return userDao.getUser(user);
+    }
+
 }

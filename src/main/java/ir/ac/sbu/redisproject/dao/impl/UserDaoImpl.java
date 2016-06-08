@@ -30,4 +30,11 @@ public class UserDaoImpl implements UserDao {
         return jedis.hgetAll(Tag.REDIS_USER_KEY);
     }
 
+    @Override
+    public String getUser(User user) {
+        pool = RedisHelper.initialRedisPool();
+        Jedis jedis = pool.getResource();
+        return jedis.hget(Tag.REDIS_USER_KEY, user.getUserName());
+    }
+
 }
