@@ -1,3 +1,6 @@
+<%@page import="java.util.Map"%>
+<%@page import="ir.ac.sbu.redisproject.service.impl.UserManagerImpl"%>
+<%@page import="ir.ac.sbu.redisproject.service.UserManager"%>
 <html lang = "en">
 
     <head>
@@ -15,23 +18,14 @@
             %>
     </head>
     <body>
-
         <div id ="container">
             <header>
                 <%@ include file="menu.jsp" %> 
             </header>
-
             <div id="banner">
                 <script src="js/slider_contents.js"></script>
-
             </div>
-
-
-
             <div id = "content" dir="rtl">
-
-
-
                 <div>
                     <div class="text-center">
                         <h1>برنامه نویسی، طراحی، ترجمه و بیشتر!</h1>
@@ -68,107 +62,39 @@
                         <div class="col-sm-2"></div>
                     </div>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div style="font-size:25px;">کاربرانی که در سایت ثبت نام کرده اند:</div>
+                <div class="table-responsive">
+                    <table id="usersTable"class="table hover" collapsing="0" width="100%" >
+                        <thead>  
+                            <tr >  
+                                <th style="text-align:right;">نام&nbspکاربر</th>  
+                                <th style="text-align:right;">پسورد</th>
+                            </tr>  
+                        </thead>  
+                        <tbody>  
+                            <%  UserManager manager = new UserManagerImpl();
+                                Map<String, String> users = manager.getAllUsers();
+                                for (String keyMap : users.keySet()) {
+                            %>
+                            <tr>
+                                <td><%=keyMap%></td>  
+                                <td><%=users.get(keyMap)%></td>
+                            </tr>
+                            <%}%>
 
-                <div id= "project-list" >
-                    <div style="font-size:25px;">پروژه&nbspهایی که اخیرا به ثبت رسیده&nbspاند:</div>
-                    <div class="table-responsive">
-                        <table id="myTable"class="table hover" collapsing="0" width="100%" >
-                            <thead>  
-                                <tr >  
-                                    <th style="text-align:right;">نام&nbspپروژه</th>  
-                                    <th style="text-align:right;">کارفرما</th>  
-                                    <th style="text-align:right;">مهارت&nbspهای&nbspمورد&nbspنیاز</th>  
-                                    <th style="text-align:right;">پایان</th>  
-                                </tr>  
-                            </thead>  
-                            <tbody>  
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td> 
-                                </tr>  
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td>
-                                </tr> 
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td> 
-                                </tr> 
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td> 
-                                </tr>  
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td>
-                                </tr> 
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td>  
-                                </tr>  
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td> 
-                                </tr>  
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td> 
-                                </tr>  
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td>  
-                                </tr>  
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td> 
-                                </tr> 
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td> 
-                                </tr>  
-                                <tr>  
-                                    <td>ساخت پلاگین حرفه ای وردپرس</td>  
-                                    <td>طهماسبی</td>  
-                                    <td> وردپرس , طراحی وب سایت , برنامه نویسی تحت وب</td>  
-                                    <td>29&nbspروز و 23&nbspساعت</td>  
-                                </tr> 
-                            </tbody>  
-                        </table>  
-                    </div>
-
-
+                        </tbody>  
+                    </table> 
                 </div>
             </div>	
         </div>
 
         <script type='text/javascript'>
-
             $(document).ready(function () {
-
-
-                $('#myTable').on('click', 'tbody tr', function () {
+                $('#usersTable').on('click', 'tbody tr', function () {
                     window.location.href = "index.html";
                 });
             });
