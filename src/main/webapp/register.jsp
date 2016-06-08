@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html >
+<%@page import="ir.ac.sbu.redisproject.service.impl.UserManagerImpl"%>
+<%@page import="ir.ac.sbu.redisproject.service.UserManager"%>
+<%@page import="java.util.Map"%>
+<html>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/login_style.css">
@@ -19,11 +21,7 @@
             <div id="form-div">
                 <form class="form" id="form1"  role="form" method="post" action="RegisterController">
                     <p class="name" >
-                        <input name="userName" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="نام کاربری" id="name" />
-                    </p>
-
-                    <p class="email" >
-                        <input name="email" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="آدرس پست الکترونیکی" id="email" />
+                        <input name="userName" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="نام کاربری" id="userName" />
                     </p>
 
                     <p class="password">
@@ -39,9 +37,7 @@
                     </div>
 
                 </form>
-
             </div>
         </div>
     </body>
 </html>
-

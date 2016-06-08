@@ -1,6 +1,4 @@
-<%@page import="ir.ac.sbu.springponisha.utils.Tag"%>
-<%@page import="ir.ac.sbu.springponisha.dao.model.User"%>
-<%@page import="ir.ac.sbu.springponisha.utils.Tag"%>
+<%@page import="ir.ac.sbu.redisproject.util.Tag"%>
 <html>
     <head>
         <link rel="stylesheet" href="css/menu_style.css">
@@ -16,10 +14,6 @@
                     out.println("<a href='login.jsp' class='firstitem menu-item-line'>ورود</a>");
                 }
             %>
-            <a href="projects_list.jsp" class="seconditem menu-item-line">پروژه&nbsp;ها</a>
-            <a href="contact-us.jsp" class="thirditem menu-item-line">ارتباط&nbsp;با&nbsp;ما</a>
-            <a href="about_us.jsp" class="forthitem menu-item-line">درباره&nbsp;ما</a>
-            <a href="creat_new_project.jsp" class="fifthitem menu-item-line">ایجاد&nbsp;پروژه</a>
             <%if (session.getAttribute(Tag.USER) != null) {
                     out.println("<a href='LogoutController' class='sixthitem menu-item-line'>خروج</a>");
                 }
@@ -30,19 +24,12 @@
                 <img src="img/menu-black.png"/> 
             </span>
             <span dir="rtl" style="cursor:pointer;position: absolute;right:100px;top:0;  margin: 3px; padding: 0px 8px 0px 8px; border-radius: 5px; background:#903;">
-                <%if (session.getAttribute(Tag.USER) != null) {
-                        out.println(
-                                "<span id='header_text' style='cursor:pointer;position: absolute;right:50px;top:20px;  margin: 3px; padding: 0px 8px 0px 8px; border-radius: 5px; background:#903;' onclick='openProfileLink();'>سلام،" + (((User) session.getAttribute(Tag.USER)).getUsername()) + "</span>");
-                    } else {
-                        out.println(
-                                "<span id='header_text' style='cursor:pointer;position: absolute;right:50px;top:20px;  margin: 3px; padding: 0px 8px 0px 8px; border-radius: 5px; background:#903;' onclick='openLoginLink();'>وارد&nbspشوید</span>");
-                    }
-                %>			
+                <!-- TODO: Esme karbar bad az login neveshte she-->
             </span>
             <span style="cursor:pointer;position: absolute;left:10px;top:0;  margin: 3px; padding: 0px 8px 0px 8px; border-radius: 5px; background:#903;">
                 <a href="first_page.jsp" id="logo"></a>
             </span>
-            <span id="header_text" style="cursor:pointer;position: absolute;left:110px;top:20px;  margin: 3px; padding: 0px 8px 0px 8px; border-radius: 5px; background:#903;" onclick="openLink();">وب سایت کاریابی پونیشا</span>
+            <span id="header_text" style="cursor:pointer;position: absolute;left:110px;top:20px;  margin: 3px; padding: 0px 8px 0px 8px; border-radius: 5px; background:#903;" onclick="openLink();">پروژه درس موضوعات پیشرفته :) </span>
         </div>
         <!-- Slidebars -->
         <script src="js/menu_functions.js"></script>
