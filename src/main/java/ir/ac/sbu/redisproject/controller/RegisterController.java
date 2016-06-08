@@ -21,18 +21,24 @@ public class RegisterController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Response.initialize(response);
-        
+
         HttpSession session = request.getSession();
         String userName = Helper.getRequestString(request, Tag.USER_NAME);
         String password = Helper.getRequestString(request, Tag.USER_PASSWORD);
-        
+
         User user = new User();
         user.setUserName(userName);
         user.setPassword(password);
-        
+
         UserManager manager = new UserManagerImpl();
-        manager.insertUser(user);
-        
+        if (manager.getUser(user) == null) {
+            manager.insertUser(user);
+            request.setAttribute(Tag.USER, user);
+            session.setAttribute(Tag.USER, user);
+            response.sendRedirect(Tag.FIRST_PAGE);
+            return;
+        }
+
         // TODO: serfan baraye test. Ba meghdare monaseb jaygozin beshe
         response.sendRedirect(Tag.REGISTER_PAGE);
 

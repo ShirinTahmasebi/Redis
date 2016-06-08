@@ -1,3 +1,4 @@
+<%@page import="ir.ac.sbu.redisproject.dao.model.User"%>
 <%@page import="ir.ac.sbu.redisproject.util.Tag"%>
 <html>
     <head>
@@ -9,13 +10,14 @@
             <a href="javascript:void(0)" class="closebtn menu-item-line" onclick="closeNav()">x</a>
             <%
                 if (session.getAttribute(Tag.USER) != null) {
-                    out.println("<a href='user_profile_editable.jsp' class='firstitem menu-item-line'>پروفایل</a>");
+                    // TODO: index.html ba file jsp monaseb jaygozin beshe!
+                    out.println("<a href='index.html' class='firstitem menu-item-line'>پروفایل</a>");
                 } else {
                     out.println("<a href='login.jsp' class='firstitem menu-item-line'>ورود</a>");
                 }
             %>
             <%if (session.getAttribute(Tag.USER) != null) {
-                    out.println("<a href='LogoutController' class='sixthitem menu-item-line'>خروج</a>");
+                    out.println("<a href='LogoutController' class='seconditem menu-item-line'>خروج</a>");
                 }
             %>
         </div>
@@ -24,7 +26,14 @@
                 <img src="img/menu-black.png"/> 
             </span>
             <span dir="rtl" style="cursor:pointer;position: absolute;right:100px;top:0;  margin: 3px; padding: 0px 8px 0px 8px; border-radius: 5px; background:#903;">
-                <!-- TODO: Esme karbar bad az login neveshte she-->
+                <%if (session.getAttribute(Tag.USER) != null) {
+                        out.println(
+                                "<span id='header_text' style='cursor:pointer;position: absolute;right:50px;top:20px;  margin: 3px; padding: 0px 8px 0px 8px; border-radius: 5px; background:#903;' onclick='openProfileLink();'>سلام،" + (((User) session.getAttribute(Tag.USER)).getUserName()) + "</span>");
+                    } else {
+                        out.println(
+                                "<span id='header_text' style='cursor:pointer;position: absolute;right:50px;top:20px;  margin: 3px; padding: 0px 8px 0px 8px; border-radius: 5px; background:#903;' onclick='openLoginLink();'>وارد&nbspشوید</span>");
+                    }
+                %>
             </span>
             <span style="cursor:pointer;position: absolute;left:10px;top:0;  margin: 3px; padding: 0px 8px 0px 8px; border-radius: 5px; background:#903;">
                 <a href="first_page.jsp" id="logo"></a>
