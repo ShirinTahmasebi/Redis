@@ -9,10 +9,7 @@ public class Tag {
     final public static String USER_ID = "userId";
     final public static String USER_NAME = "userName";
     final public static String USER_PASSWORD = "password";
-    final public static String USER_EMAIL = "email";
-    final public static String USER_FIRST_LAST_NAME = "userFirstLastName";
-    final public static String USER_BIRTH_DATE = "birthDate";
-    final public static String USER_CITY = "city";
+    final public static String REDIS_USER_KEY = "users";
 
     /*
      project model fields
@@ -63,5 +60,11 @@ public class Tag {
     final public static String EDIT_PROFILE_PAGE = "edit_profile.jsp";
 
     final public static String PERSISTANCE_UNIT_NAME = "UserService";
+
+    /*
+     Redis basic configuration data
+     */
+    public static final String REDIS_HOST = "localhost";
+    public static final Integer REDIS_PORT = 6379;
 
 }
