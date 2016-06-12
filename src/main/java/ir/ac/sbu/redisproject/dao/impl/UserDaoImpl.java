@@ -11,7 +11,7 @@ import redis.clients.jedis.JedisPool;
 
 public class UserDaoImpl implements UserDao {
 
-    // The jedis connection pool..
+    // The jedis connection pool
     private static JedisPool pool = null;
 
     @Override

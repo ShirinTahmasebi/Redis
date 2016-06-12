@@ -12,6 +12,15 @@ public class Tag {
     final public static String REDIS_USER_KEY = "users";
 
     /*
+     item model fields
+     */
+    final public static String ITEM = "item";
+    final public static String ITEM_ID = "itemId";
+    final public static String ITEM_NAME = "itemName";
+    final public static String REDIS_ITEM_KEY = "items";
+    
+
+    /*
      project model fields
      */
     final public static String PROJECT = "project";
