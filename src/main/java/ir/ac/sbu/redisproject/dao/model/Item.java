@@ -2,14 +2,14 @@ package ir.ac.sbu.redisproject.dao.model;
 
 public class Item {
 
-    int itemId;
+    String itemId;
     String itemName;
 
-    public void setItemId(int itemId) {
+    public void setItemId(String itemId) {
         this.itemId = itemId;
     }
 
-    public int getItemId() {
+    public String getItemId() {
         return itemId;
     }
 
