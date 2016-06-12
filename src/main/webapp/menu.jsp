@@ -17,7 +17,15 @@
                 }
             %>
             <%if (session.getAttribute(Tag.USER) != null) {
-                    out.println("<a href='LogoutController' class='seconditem menu-item-line'>خروج</a>");
+                    out.println("<a href='ShowItemsController' class='seconditem menu-item-line'>لیست&nbspمحصولات</a>");
+                }
+            %>
+            <%if (session.getAttribute(Tag.USER) != null) {
+                    out.println("<a href='AddItemController' class='thirditem menu-item-line'>محصول&nbspجدید</a>");
+                }
+            %>
+            <%if (session.getAttribute(Tag.USER) != null) {
+                    out.println("<a href='LogoutController' class='forthitem menu-item-line'>خروج</a>");
                 }
             %>
         </div>

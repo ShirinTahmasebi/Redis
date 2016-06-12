@@ -6,6 +6,7 @@
 package ir.ac.sbu.redisproject.util;
 
 import java.io.UnsupportedEncodingException;
+import java.rmi.server.UID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -33,5 +34,10 @@ public class Helper {
         pattern = Pattern.compile(regex);
         matcher = pattern.matcher(word);
         return matcher.matches();
+    }
+
+    public static String generateUniqueId() {
+        UID id = new UID();
+        return id.toString();
     }
 }
