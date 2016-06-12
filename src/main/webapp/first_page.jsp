@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="ir.ac.sbu.redisproject.dao.model.Item"%>
+<%@page import="ir.ac.sbu.redisproject.service.impl.ItemManagerImpl"%>
+<%@page import="ir.ac.sbu.redisproject.service.ItemManager"%>
 <%@page import="java.util.Map"%>
 <%@page import="ir.ac.sbu.redisproject.service.impl.UserManagerImpl"%>
 <%@page import="ir.ac.sbu.redisproject.service.UserManager"%>
@@ -89,12 +93,43 @@
                         </tbody>  
                     </table> 
                 </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <div style="font-size:25px;">محصولاتی که سایت به ثبت رسیده اند:</div>
+                <div class="table-responsive">
+                    <table id="itemsTable"class="table hover" collapsing="0" width="100%" >
+                        <thead>  
+                            <tr >  
+                                <th style="text-align:right;">نام&nbspمحصول</th>  
+                                <th style="text-align:right;">کلید&nbspمحصول</th>
+                            </tr>  
+                        </thead>  
+                        <tbody>  
+                            <%  ItemManager itemManager = new ItemManagerImpl();
+                                List<Item> items = itemManager.getAllItems();
+                                for (Item item : items) {
+                            %>
+                            <tr>
+                                <td><%=item.getItemName()%></td>
+                                <td><%=item.getItemId()%></td>  
+                            </tr>
+                            <%}%>
+
+                        </tbody>  
+                    </table> 
+                </div>
             </div>	
         </div>
 
         <script type='text/javascript'>
             $(document).ready(function () {
                 $('#usersTable').on('click', 'tbody tr', function () {
+                    window.location.href = "index.html";
+                });
+                $('#itemsTable').on('click', 'tbody tr', function () {
                     window.location.href = "index.html";
                 });
             });

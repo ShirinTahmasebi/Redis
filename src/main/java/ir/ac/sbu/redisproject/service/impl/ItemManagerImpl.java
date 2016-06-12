@@ -4,7 +4,7 @@ import ir.ac.sbu.redisproject.dao.ItemDao;
 import ir.ac.sbu.redisproject.dao.impl.ItemDaoImpl;
 import ir.ac.sbu.redisproject.dao.model.Item;
 import ir.ac.sbu.redisproject.service.ItemManager;
-import java.util.Set;
+import java.util.List;
 
 public class ItemManagerImpl implements ItemManager {
 
@@ -21,7 +21,7 @@ public class ItemManagerImpl implements ItemManager {
     }
 
     @Override
-    public Set<String> getAllItems() {
+    public List<Item> getAllItems() {
         ItemDao itemDao = new ItemDaoImpl();
         return itemDao.getAllItems();
     }
