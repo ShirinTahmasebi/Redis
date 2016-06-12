@@ -21,7 +21,7 @@
                 }
             %>
             <%if (session.getAttribute(Tag.USER) != null) {
-                    out.println("<a href='AddItemController' class='thirditem menu-item-line'>محصول&nbspجدید</a>");
+                    out.println("<a href='create_new_item.jsp' class='thirditem menu-item-line'>محصول&nbspجدید</a>");
                 }
             %>
             <%if (session.getAttribute(Tag.USER) != null) {

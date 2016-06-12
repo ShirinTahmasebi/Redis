@@ -18,7 +18,7 @@ public class Tag {
     final public static String ITEM_ID = "itemId";
     final public static String ITEM_NAME = "itemName";
     final public static String REDIS_ITEM_KEY = "items";
-    
+
 
     /*
      project model fields
@@ -67,6 +67,7 @@ public class Tag {
     final public static String USER_EDITABLE_PROFILE_PAGE = "user_profile_editable.jsp";
     final public static String CREATE_RECOMMENDATION_PAGE = "recommendation.jsp";
     final public static String EDIT_PROFILE_PAGE = "edit_profile.jsp";
+    final public static String CREATE_NEW_ITEM_PAGE = "create_new_item.jsp";
 
     final public static String PERSISTANCE_UNIT_NAME = "UserService";
 

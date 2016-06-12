@@ -36,6 +36,9 @@ public class ItemDaoImpl implements ItemDao {
     public String getItemScore(String itemId) {
         pool = RedisHelper.initialRedisPool();
         Jedis jedis = pool.getResource();
+        if (jedis.zrank(Tag.REDIS_ITEM_KEY, itemId + "") == null) {
+            return null;
+        }
         return jedis.zrank(Tag.REDIS_ITEM_KEY, itemId + "").toString();
     }
 
