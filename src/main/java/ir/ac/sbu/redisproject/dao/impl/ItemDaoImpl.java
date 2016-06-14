@@ -75,24 +75,33 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public String getItem(Item item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public String getItemScore(String itemId) {
         pool = RedisHelper.initialRedisPool();
         Jedis jedis = pool.getResource();
-        Set<String> items = jedis.zrange(Tag.REDIS_ITEM_KEY, 0, -1);
-        ObjectMapper mapper = new ObjectMapper();
-        for (String item : items) {
-            try {
-                Item tItem = mapper.readValue(item, Item.class);
-                if (tItem.getItemId().equals(itemId)) {
-                    return jedis.zrank(Tag.REDIS_ITEM_KEY, itemId + "").toString();
+        
+        Set<Tuple> items = jedis.zrangeWithScores(Tag.REDIS_ITEM_KEY, 0, -1);
+        ObjectMapper objectMapper = new ObjectMapper();
+        for(Tuple item : items){
+            Item i;
+            try{
+                i = objectMapper.readValue(item.getElement(), Item.class);
+                if(i.getItemId().equals(itemId)){
+                    return item.getScore() + "";
                 }
-            } catch (IOException ex) {
-                Logger.getLogger(ItemDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            catch (IOException ex) {
+                Logger.getLogger(ItemDaoImpl.class.getName()).log(Level.SEVERE, "" + item.getElement(), ex);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Item getItem(String itemId) {
+        List<Item> items = getAllItems();
+        for (Item item : items) {
+            if (item.getItemId().equals(itemId)) {
+                return item;
             }
         }
         return null;

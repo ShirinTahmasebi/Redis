@@ -10,7 +10,7 @@ public interface ItemDao {
 
     public List<Item> getAllItems();
 
-    public String getItem(Item item);
+    public Item getItem(String itemId);
 
     public String getItemScore(String itemId);
     

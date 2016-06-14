@@ -16,9 +16,9 @@ public class ItemManagerImpl implements ItemManager {
     }
 
     @Override
-    public String getItem(Item item) {
+    public Item getItem(String itemId) {
         ItemDao itemDao = new ItemDaoImpl();
-        return itemDao.getItem(item);
+        return itemDao.getItem(itemId);
     }
 
     @Override
