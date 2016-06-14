@@ -8,12 +8,15 @@ import ir.ac.sbu.redisproject.util.RedisHelper;
 import ir.ac.sbu.redisproject.util.Tag;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.Tuple;
 
 public class ItemDaoImpl implements ItemDao {
 
@@ -47,6 +50,25 @@ public class ItemDaoImpl implements ItemDao {
                 itemList.add(i);
             } catch (IOException ex) {
                 Logger.getLogger(ItemDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return itemList;
+    }
+
+    @Override
+    public Map<Item, Double> getAllItemsWithScores() {
+        pool = RedisHelper.initialRedisPool();
+        Jedis jedis = pool.getResource();
+        Set<Tuple> items = jedis.zrangeWithScores(Tag.REDIS_ITEM_KEY, 0, -1);
+        Map<Item, Double> itemList = new HashMap<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        for (Tuple item : items) {
+            Item i;
+            try {
+                i = objectMapper.readValue(item.getElement(), Item.class);
+                itemList.put(i, item.getScore());
+            } catch (IOException ex) {
+                Logger.getLogger(ItemDaoImpl.class.getName()).log(Level.SEVERE, "" + item.getElement(), ex);
             }
         }
         return itemList;

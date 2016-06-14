@@ -5,6 +5,7 @@ import ir.ac.sbu.redisproject.dao.impl.ItemDaoImpl;
 import ir.ac.sbu.redisproject.dao.model.Item;
 import ir.ac.sbu.redisproject.service.ItemManager;
 import java.util.List;
+import java.util.Map;
 
 public class ItemManagerImpl implements ItemManager {
 
@@ -30,6 +31,12 @@ public class ItemManagerImpl implements ItemManager {
     public String getItemScore(String itemId) {
         ItemDao itemDao = new ItemDaoImpl();
         return itemDao.getItemScore(itemId);
+    }
+
+    @Override
+    public Map<Item, Double> getAllItemsWithScores() {
+        ItemDao itemDao = new ItemDaoImpl();
+        return itemDao.getAllItemsWithScores();
     }
 
 }
