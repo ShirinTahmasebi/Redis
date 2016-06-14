@@ -16,12 +16,13 @@
         %>
     <body style= " text-align: justify; text-justify: inter-word;">
 
-        <%String itemId= request.getParameter(Tag.ITEM_ID);
-        ItemManager itemManager = new ItemManagerImpl(); 
-        Item item = itemManager.getItem(itemId);
-        String itemScore = itemManager.getItemScore(itemId);
+        <%String itemId = request.getParameter(Tag.ITEM_ID);
+            ItemManager itemManager = new ItemManagerImpl();
+            Item item = itemManager.getItem(itemId);
+            String itemScore = itemManager.getItemScore(itemId);
+            itemManager.insertItem(item, Double.parseDouble(itemScore) + 1);
         %>
-        
+
         <%@ include file="menu.jsp" %> 
 
         <div class = "container" dir="rtl">
@@ -47,7 +48,7 @@
             <hr>
 
             <div class = "row" >
-                <% if (item != null && item.getItemName()!= null) {
+                <% if (item != null && item.getItemName() != null) {
                         out.println(
                                 "<div class = 'col-md-9 col-sm-9 col-xs-9'>"
                                 + item.getItemName()
@@ -66,7 +67,7 @@
 
             <hr>
             <div class = "row" >
-                <% if (itemScore!= null && item != null) {
+                <% if (itemScore != null && item != null) {
                         out.println(
                                 "<div class = 'col-md-9 col-sm-9 col-xs-9'>"
                                 + itemScore

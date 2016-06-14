@@ -16,6 +16,12 @@ public class ItemManagerImpl implements ItemManager {
     }
 
     @Override
+    public void insertItem(Item item, Double score) {
+        ItemDao itemDao = new ItemDaoImpl();
+        itemDao.insertItem(item, score);
+    }
+
+    @Override
     public Item getItem(String itemId) {
         ItemDao itemDao = new ItemDaoImpl();
         return itemDao.getItem(itemId);

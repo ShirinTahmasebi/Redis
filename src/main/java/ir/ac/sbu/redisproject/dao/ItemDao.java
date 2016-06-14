@@ -8,12 +8,14 @@ public interface ItemDao {
 
     public void insertItem(Item item);
 
+    public void insertItem(Item item, Double score);
+
     public List<Item> getAllItems();
 
     public Item getItem(String itemId);
 
     public String getItemScore(String itemId);
-    
+
     public Map<Item, Double> getAllItemsWithScores();
 
 }

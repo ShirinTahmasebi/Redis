@@ -9,6 +9,8 @@ import ir.ac.sbu.redisproject.util.Tag;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -31,6 +33,19 @@ public class ItemDaoImpl implements ItemDao {
             ObjectMapper mapper = new ObjectMapper();
             String jsonInString = mapper.writeValueAsString(item);
             jedis.zadd(Tag.REDIS_ITEM_KEY, 0, jsonInString);
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(ItemDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
+    public void insertItem(Item item, Double score) {
+        try {
+            pool = RedisHelper.initialRedisPool();
+            Jedis jedis = pool.getResource();
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonInString = mapper.writeValueAsString(item);
+            jedis.zadd(Tag.REDIS_ITEM_KEY, score, jsonInString);
         } catch (JsonProcessingException ex) {
             Logger.getLogger(ItemDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -60,9 +75,11 @@ public class ItemDaoImpl implements ItemDao {
         pool = RedisHelper.initialRedisPool();
         Jedis jedis = pool.getResource();
         Set<Tuple> items = jedis.zrangeWithScores(Tag.REDIS_ITEM_KEY, 0, -1);
-        Map<Item, Double> itemList = new HashMap<>();
+        LinkedHashMap<Item, Double> itemList = new LinkedHashMap<>();
         ObjectMapper objectMapper = new ObjectMapper();
-        for (Tuple item : items) {
+        Iterator<Tuple> itemIterator = items.iterator();
+        while(itemIterator.hasNext()) {
+            Tuple item = itemIterator.next();
             Item i;
             try {
                 i = objectMapper.readValue(item.getElement(), Item.class);
